@@ -1,0 +1,48 @@
+# Agent Guide
+
+Use this private repository as shared memory.
+
+## First rule
+
+Do not load everything.
+
+Use current conversation first, local memory second, and this repository only when durable shared memory is useful.
+
+## When to read
+
+Read this repository when the task depends on:
+
+- Stable user preference.
+- Durable principle.
+- Previous decision.
+- Long-running project.
+- Cross-agent consistency.
+
+Skip it when current context is enough.
+
+## When to write
+
+Write only when the item is:
+
+- Durable.
+- Useful across agents.
+- Likely to affect future behavior.
+- Compact.
+
+## Where to write
+
+- Preferences: `userland/preferences.md`
+- Communication style: `userland/communication.md`
+- Personal principles: `principles/personal.md`
+- Decisions: `memory/decisions.md`
+- Projects: `memory/projects.md`
+- Insights: `insights/`
+- Unconfirmed items: `runtime/inbox.md`
+- Change history: `runtime/changelog.md`
+
+## Never write
+
+- Raw chat logs.
+- Temporary task progress.
+- Large generated drafts.
+- Secrets or credentials.
