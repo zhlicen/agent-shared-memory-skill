@@ -14,7 +14,7 @@ git clone https://github.com/zhlicen/agent-shared-memory-skill
 cp -r agent-shared-memory-skill/templates/private-memory-repo/* agent-shared-memory/
 cd agent-shared-memory
 git add -A
-git commit -m "memory(setup): initialize from skill template 0.2.1"
+git commit -m "memory(setup): initialize from skill template 0.2.2"
 git push -u origin HEAD
 ```
 

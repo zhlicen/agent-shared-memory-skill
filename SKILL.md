@@ -1,7 +1,7 @@
 ---
 name: agent-shared-memory
 description: Protocol for using a private git repository as durable cross-agent shared memory. Use when the user wants agents to remember preferences, decisions, projects, or insights across tools and sessions, or asks to create or connect a shared memory repository.
-version: 0.2.1
+version: 0.2.2
 ---
 
 # Agent Shared Memory Skill
@@ -38,6 +38,7 @@ If the user already has a private repository:
 3. Do not create another private memory repository.
 4. Do not overwrite existing memory.
 5. Only suggest adding missing template files after user confirmation.
+6. Optionally offer a seed delta from local memory through the seeding flow below.
 
 Expected structure:
 
@@ -65,7 +66,7 @@ If the user does not have a private repository:
    cp -r agent-shared-memory-skill/templates/private-memory-repo/* agent-shared-memory/
    cd agent-shared-memory
    git add -A
-   git commit -m "memory(setup): initialize from skill template 0.2.1"
+   git commit -m "memory(setup): initialize from skill template 0.2.2"
    git push -u origin HEAD
    ```
 
@@ -116,6 +117,8 @@ Protection, recommended to the user:
 ## Memory seeding
 
 During initialization, the agent may propose a seed memory set from available context.
+
+Seeding also applies when an agent first connects to an existing repository: read its current content first, then propose only the delta — local memory items not yet present. Skip duplicates; route contradictions through the conflict rule.
 
 Seed memory may include:
 

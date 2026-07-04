@@ -4,7 +4,7 @@ This is the user's private shared memory repository.
 
 It stores durable memory for AI agents. It is not a chat archive.
 
-Template version: 0.2.1
+Template version: 0.2.2
 
 ## Purpose
 

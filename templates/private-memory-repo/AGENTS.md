@@ -69,6 +69,8 @@ Promotion: when a local memory item passes this test, propose adding it here thr
 
 During first setup, an agent may propose seed memory from current context or local memory.
 
+This also applies when a new agent first connects to this existing repository: read current content first, propose only the delta, skip duplicates, and route contradictions through the conflict rule.
+
 Before writing seed memory:
 
 1. Show the proposed seed memory to the user.

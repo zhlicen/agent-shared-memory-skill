@@ -1,6 +1,6 @@
 # Memory Policy
 
-Framework default from skill template 0.2.1. Keep, edit, or replace.
+Framework default from skill template 0.2.2. Keep, edit, or replace.
 
 Shared memory is indexed, not loaded.
 
