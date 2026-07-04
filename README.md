@@ -1,45 +1,97 @@
 # Agent Shared Memory Skill
 
-A read-only public skill for helping AI agents guide users to create and use a private shared memory repository.
+**A public, read-only skill for building private cross-agent memory.**
 
-This repository contains the framework only. It should not contain user memory, project runtime, personal data, or private decisions.
+---
 
-## Purpose
+## TL;DR
 
-When a user gives an agent this skill, the agent should help the user set up a private memory repository and then keep all runtime memory there.
+This repository teaches AI agents **how to use shared memory**.
 
-The public skill defines:
+It does **not** store user memory.
 
-- Why shared memory exists.
-- When an agent should read shared memory.
-- When an agent should write shared memory.
-- How to keep memory compact.
-- How to separate framework from user-specific memory.
+User memory belongs in a **private repository**.
 
-## Expected behavior
+---
 
-An agent using this skill should:
+## Quick Install
 
-1. Read `SKILL.md`.
-2. Explain the framework/private-memory split.
-3. Ask the user for, or help the user create, a private memory repository.
-4. Initialize that private repository from `templates/private-memory-repo/`.
-5. Store all user-specific memory only in the private repository.
-6. Treat this public repository as read-only framework documentation.
+Copy this to any AI agent:
 
-## Key rule
+```text
+Use this skill:
+https://github.com/zhlicen/agent-shared-memory-skill
+Read README.md and SKILL.md.
+Treat this repository as read-only.
+If I don't have a private shared memory repository, help me create one.
+If I already have one, use it for all future shared memory and runtime.
+```
 
-Framework lives here.
+---
 
-Soul and runtime live in the user's private repository.
+## Architecture
 
-## Public vs private
+```text
+Public Skill (this repo)
+    ↓
+Teaches agents how memory works
 
-| Layer | Repository | Contains | Mutability |
-|---|---|---|---|
-| Skill / framework | This public repo | protocol, templates, usage rules | read-only for agents |
-| User memory | User private repo | preferences, decisions, projects, insights, runtime | user-controlled |
+Private Repository
+    ↓
+Stores user preferences
+Stores decisions
+Stores projects
+Stores insights
+Stores runtime
+```
 
-## Quick instruction for agents
+---
 
-If a user gives you this repository link, do not store memory here. Read `SKILL.md`, then guide the user to create or connect a private shared memory repository.
+## Memory Order
+
+```text
+Current Conversation
+        ↓
+Local Memory
+        ↓
+Current Project
+        ↓
+Private Shared Memory
+```
+
+---
+
+## Write Only
+
+* Preferences
+* Principles
+* Decisions
+* Projects
+* Insights
+
+Never:
+
+* Chat history
+* Temporary tasks
+* Generated drafts
+* Secrets
+
+---
+
+## Principle
+
+> Framework is public.
+>
+> Memory is private.
+>
+> Shared memory is indexed, not loaded.
+
+---
+
+## Files
+
+```text
+README.md
+SKILL.md
+templates/
+```
