@@ -1,7 +1,7 @@
 ---
 name: agent-shared-memory
 description: Protocol for using a private git repository as durable cross-agent shared memory. Use when the user wants agents to remember preferences, decisions, projects, or insights across tools and sessions, or asks to create or connect a shared memory repository.
-version: 0.2.0
+version: 0.2.1
 ---
 
 # Agent Shared Memory Skill
@@ -65,7 +65,7 @@ If the user does not have a private repository:
    cp -r agent-shared-memory-skill/templates/private-memory-repo/* agent-shared-memory/
    cd agent-shared-memory
    git add -A
-   git commit -m "memory: initialize from skill template 0.2.0"
+   git commit -m "memory(setup): initialize from skill template 0.2.1"
    git push -u origin HEAD
    ```
 
@@ -94,8 +94,10 @@ Writes:
 
 1. Pull immediately before writing.
 2. Make the smallest edit.
-3. Commit one logical change: `memory: <verb> <path> — <summary>`.
+3. Commit one logical change: `memory(<agent>): <verb> <path> — <summary>`.
 4. Push immediately.
+
+The `<agent>` tag names the writing agent (for example `claude-code`, `trae`). It makes `git log` the audit trail for who wrote what.
 
 Conflicts:
 
@@ -153,6 +155,8 @@ When the user provides this skill:
 3. Private shared memory repository.
 4. This public skill repository, for framework rules only.
 
+If local memory contradicts shared memory, do not silently pick a side. Surface the conflict to the user, and update the stale side after confirmation.
+
 ## Read rule
 
 Read shared memory only when durable cross-agent context is useful.
@@ -177,6 +181,8 @@ Confirmation gate:
 2. Everything inferred goes to `runtime/inbox.md` first.
 
 Test before writing: would a future agent, in a different tool, behave differently because of this item? If not, do not write it.
+
+Promotion: when a local memory item passes this test, propose adding it to shared memory through the same confirmation gate.
 
 Good writes:
 

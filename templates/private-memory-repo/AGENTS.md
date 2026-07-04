@@ -13,6 +13,8 @@ Context order:
 3. This private shared memory repository.
 4. Public skill repository, for framework rules only.
 
+If local memory contradicts this repository, do not silently pick a side. Surface the conflict to the user, and update the stale side after confirmation.
+
 ## Repository ownership
 
 This is the user's private memory repository.
@@ -26,7 +28,7 @@ Do not treat the public skill repository as runtime memory.
 ## Git rules
 
 - Pull before reading. Pull again immediately before writing.
-- Make the smallest edit, commit one logical change as `memory: <verb> <path> — <summary>`, and push immediately.
+- Make the smallest edit, commit one logical change as `memory(<agent>): <verb> <path> — <summary>`, and push immediately. The `<agent>` tag names you (for example `claude-code`, `trae`) — it makes `git log` the audit trail for who wrote what.
 - Never force-push. If a push is rejected, pull and merge, keeping both sides' content. If the merged content contradicts itself, move both versions to `runtime/inbox.md` for user review.
 
 ## When to read
@@ -60,6 +62,8 @@ Write only when the item is:
 Everything inferred goes to `runtime/inbox.md` first.
 
 Test before writing: would a future agent, in a different tool, behave differently because of this item? If not, do not write it.
+
+Promotion: when a local memory item passes this test, propose adding it here through the same confirmation gate.
 
 ## Seed memory rule
 
