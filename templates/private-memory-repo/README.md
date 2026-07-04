@@ -4,6 +4,8 @@ This is the user's private shared memory repository.
 
 It stores durable memory for AI agents. It is not a chat archive.
 
+Template version: 0.2.0
+
 ## Purpose
 
 Use this repository to preserve high-signal information that should affect future AI behavior across tools.
@@ -11,8 +13,9 @@ Use this repository to preserve high-signal information that should affect futur
 ## Context order
 
 1. Current conversation.
-2. Local agent memory or project files.
+2. Local agent memory and project files.
 3. This private shared memory repository.
+4. Public skill repository, for framework rules only.
 
 ## Read rule
 
@@ -24,13 +27,15 @@ Use `MANIFEST.md` to choose the smallest relevant file.
 
 Write rarely. Save only durable, cross-agent information.
 
+Write directly only what the user stated or confirmed. Inferred items go to `runtime/inbox.md` first.
+
 ## Directory map
 
 ```text
 AGENTS.md                Quick instruction for agents
 MANIFEST.md              File selection guide
 userland/                User working style and preferences
-principles/              Durable personal principles
+principles/              User principles + framework defaults
 memory/                  Decisions, projects, glossary
 insights/                Long-term insights
 runtime/                 Inbox and changelog

@@ -2,6 +2,8 @@
 
 Use this file to choose what to read.
 
+Rules live in `AGENTS.md`. This file routes content reads.
+
 ## Userland
 
 | Path | Purpose | Read when |
@@ -43,3 +45,5 @@ Use this file to choose what to read.
 ## Selection rule
 
 Read the smallest file that can answer the need. Stop when enough context is found.
+
+Archive files (`*-archive.md`) hold stale entries. Read them only when history is needed.

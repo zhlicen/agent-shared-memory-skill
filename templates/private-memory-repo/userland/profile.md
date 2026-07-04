@@ -5,6 +5,7 @@ Purpose: preserve only working-style context that helps agents behave better.
 ## Working context
 
 - Add compact context about the user's work, tools, responsibilities, and recurring domains.
+- Example (replace): backend engineer at a fintech startup; ships Go services; on-call every third week.
 
 ## Working style
 

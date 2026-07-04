@@ -7,6 +7,7 @@ Stable preferences that should guide many agents.
 - Add preferred answer style.
 - Add preferred level of detail.
 - Add formatting preferences.
+- Example (replace): conclusions first, then reasoning; concise bullets; metric units.
 
 ## Collaboration style
 

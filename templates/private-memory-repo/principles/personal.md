@@ -18,4 +18,4 @@ Format:
 
 ## Maintenance rule
 
-Keep this file short. If a principle is generic and reusable by anyone, it belongs in the public skill repository instead.
+Keep this file short. If a principle is generic and reusable by anyone, do not store it here — it is framework material. Suggest it to the public skill repository through an issue or pull request instead.

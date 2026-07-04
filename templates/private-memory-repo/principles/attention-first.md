@@ -1,5 +1,7 @@
 # Attention First
 
+Framework default from skill template 0.2.0. Keep, edit, or replace.
+
 Human attention is more expensive than AI generation.
 
 ## Principle

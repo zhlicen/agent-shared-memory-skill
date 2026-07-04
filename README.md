@@ -27,6 +27,10 @@ If I don't have a private shared memory repository, help me create one.
 If I already have one, use it for all future shared memory and runtime.
 ```
 
+Review the files yourself before adopting them. Pin a commit or tag if you want the protocol immutable.
+
+To install as a Claude Code skill, clone into a directory named `agent-shared-memory` (matching the skill name in `SKILL.md`).
+
 ---
 
 ## Architecture
@@ -42,22 +46,24 @@ Stores user preferences
 Stores decisions
 Stores projects
 Stores insights
-Stores runtime
+Stores runtime (inbox + changelog)
 ```
 
 ---
 
-## Memory Order
+## Context Order
 
 ```text
 Current Conversation
         ↓
-Local Memory
-        ↓
-Current Project
+Local Memory + Project Files
         ↓
 Private Shared Memory
+        ↓
+Public Skill (framework rules only)
 ```
+
+Check the top first. Go lower only when needed.
 
 ---
 
@@ -68,12 +74,14 @@ Private Shared Memory
 * Decisions
 * Projects
 * Insights
+* Pending questions
 
 Never:
 
 * Chat history
 * Temporary tasks
 * Generated drafts
+* Unconfirmed guesses
 * Secrets
 
 ---
@@ -86,12 +94,16 @@ Never:
 >
 > Shared memory is indexed, not loaded.
 
+Indexed: agents pick the smallest relevant file through the private repo's `MANIFEST.md`, never bulk-load.
+
 ---
 
 ## Files
 
 ```text
 README.md
+QUICKSTART.md
 SKILL.md
+LICENSE
 templates/
 ```

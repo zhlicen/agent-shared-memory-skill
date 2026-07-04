@@ -5,6 +5,7 @@ How agents should communicate with the user.
 ## Default tone
 
 - Add tone preferences.
+- Example (replace): direct and technical, no filler praise.
 
 ## Complex work
 
