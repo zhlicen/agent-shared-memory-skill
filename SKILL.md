@@ -2,7 +2,7 @@
 
 ## Mission
 
-Guide the user to create and operate a private shared memory repository for AI agents.
+Guide the user to create or connect a private shared memory repository for AI agents.
 
 This public repository is a read-only skill. It contains protocol and templates only. User-specific memory belongs in the user's private repository.
 
@@ -13,36 +13,89 @@ Separate framework from soul.
 - Framework: public, reusable, read-only skill.
 - Soul: private, user-specific memory and runtime.
 
-## Agent behavior
+## Installation flow
 
-When the user provides this skill:
+Before creating anything, always run a short survey.
 
-1. Do not write user memory into this public repository.
-2. Check whether the user already has a private memory repository.
-3. If not, guide the user to create one.
-4. Initialize the private repository using `templates/private-memory-repo/`.
-5. Use the private repository as the runtime memory location.
-6. Keep memory compact and high-signal.
+Ask the user:
 
-## Private repository recommendation
+1. Do you already have a private shared memory repository?
+2. If yes, please provide its repository URL.
+3. If no, should I guide you to create one?
 
-Recommended name:
+## Existing private repository
+
+If the user already has a private repository:
+
+1. Connect to that repository.
+2. Check whether it contains the expected structure.
+3. Do not create another private memory repository.
+4. Do not overwrite existing memory.
+5. Only suggest adding missing template files after user confirmation.
+
+Expected structure:
 
 ```text
-agent-shared-memory
+AGENTS.md
+MANIFEST.md
+userland/
+principles/
+memory/
+insights/
+runtime/
 ```
 
-Recommended visibility:
+## New private repository
 
-```text
-private
-```
+If the user does not have a private repository:
+
+1. Recommend creating a private repository named `agent-shared-memory`.
+2. Initialize it from `templates/private-memory-repo/`.
+3. Tell the user to save the private repository URL for other agents.
+4. Use that private repository as the runtime memory location.
+
+Recommended visibility: private.
 
 Recommended description:
 
 ```text
 Private shared memory, decisions, preferences, and project context for personal AI agents.
 ```
+
+## Memory seeding
+
+During initialization, the agent may propose a seed memory set from available context.
+
+Seed memory may include:
+
+- Stable user preferences.
+- Durable principles.
+- Important decisions.
+- Long-running project context.
+- Important insights.
+- Pending questions for later review.
+
+Rules:
+
+1. Present the proposed seed memory to the user first.
+2. Ask for confirmation before writing it.
+3. Write seed memory only to the private repository.
+4. Never write user memory to this public skill repository.
+5. Never import raw chat logs.
+6. Never store secrets or credentials.
+7. Do not store unconfirmed guesses as facts.
+
+## Agent behavior
+
+When the user provides this skill:
+
+1. Do not write user memory into this public repository.
+2. Survey whether the user already has a private memory repository.
+3. If one exists, connect to it and do not overwrite it.
+4. If one does not exist, guide the user to create one.
+5. Initialize the private repository using `templates/private-memory-repo/`.
+6. Use the private repository as the runtime memory location.
+7. Keep memory compact and high-signal.
 
 ## Memory use order
 
@@ -88,7 +141,7 @@ If access is unavailable, ask the user to provide access, clone the repository, 
 
 The user should end with:
 
-- A private memory repository.
+- A private memory repository URL.
 - Clear separation between public framework and private memory.
 - A compact read/write protocol.
 - A structure that any capable agent can follow without loading excessive context.
